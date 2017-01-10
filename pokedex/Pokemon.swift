@@ -110,7 +110,8 @@ class Pokemon {
     }
     
     func getDetails(completed: @escaping DownloadComplete) {
-        Alamofire.request("\(POKEMON_URL_PREFIX)/\(self._id)").responseJSON { response in
+        let pokemonURL = "\(URL_PREFIX)\(POKEMON_URL_SUFFIX)/\(self.id)"
+        Alamofire.request(pokemonURL).responseJSON { response in
             if let JSON = response.result.value as? Dictionary<String, Any> {
                 if let attack = JSON["attack"] as? Int {
                     self._attack = "\(attack)"
@@ -124,13 +125,34 @@ class Pokemon {
                 if let weight = JSON["weight"] as? String {
                     self._weight = weight
                 }
+                if let types = JSON["types"] as? [Dictionary<String, String>] {
+                    var typeArray = [String]()
+                    for type in types {
+                        if let name = type["name"] {
+                            typeArray.append(name)
+                        }
+                    }
+                    self._type = typeArray.joined(separator: ",")
+                }
+                if let descriptions = JSON["descriptions"] as? [Dictionary<String, String>], descriptions.count > 0 {
+                    let descriptionUri = descriptions[0]["resource_uri"]
+                    Alamofire.request("\(URL_PREFIX)\(descriptionUri)").responseJSON { response in
+                        if let JSON = response.result.value as? Dictionary<String, Any> {
+                            if let description = JSON["description"] as? String {
+                                self._description = description
+                            }
+                        }
+                    }
+                }
                 print(self._attack)
                 print(self._defense)
                 print(self._height)
                 print(self._weight)
+                print(self._type)
+                
+                // type, description, evo stuff
             }
             completed()
-            
         }
     }
     

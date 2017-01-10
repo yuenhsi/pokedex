@@ -8,5 +8,6 @@
 
 import Foundation
 
-let POKEMON_URL_PREFIX = "http://pokeapi.co/api/v1/pokemon"
+let URL_PREFIX = "http://pokeapi.co"
+let POKEMON_URL_SUFFIX = "/api/v1/pokemon"
 typealias DownloadComplete = () -> ()
