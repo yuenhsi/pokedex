@@ -31,7 +31,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pokedex" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yRs-7d-liM">
-                                        <rect key="frame" x="134" y="17.5" width="106.5" height="39.5"/>
+                                        <rect key="frame" x="134.5" y="17.5" width="106.5" height="39.5"/>
                                         <fontDescription key="fontDescription" name="PokemonSolidNormal" family="Pokemon Solid" pointSize="28"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -199,7 +199,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="mcZ-EW-Gdm">
                                 <rect key="frame" x="20" y="108" width="335" height="120"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="82FAE6C2-F78A-480D-928E-9701BDB01AB1" translatesAutoresizingMaskIntoConstraints="NO" id="hmu-Z6-Vtd">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="D99F4593-701B-4F65-8921-C85EF6B8907F" translatesAutoresizingMaskIntoConstraints="NO" id="hmu-Z6-Vtd">
                                         <rect key="frame" x="0.0" y="0.0" width="86.5" height="120"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The bulb on its back grows as it absorbs nutrients. The bulb gives off a pleasant aroma when it blooms. " lineBreakMode="clip" numberOfLines="7" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wtE-Vp-2ph">
@@ -414,7 +414,7 @@
     <resources>
         <image name="1" width="120" height="120"/>
         <image name="2" width="120" height="120"/>
-        <image name="82FAE6C2-F78A-480D-928E-9701BDB01AB1" width="120" height="120">
+        <image name="D99F4593-701B-4F65-8921-C85EF6B8907F" width="120" height="120">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
