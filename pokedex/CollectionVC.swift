@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate {
+class CollectionVC: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate {
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -23,6 +23,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         collectionView.delegate = self
         collectionView.dataSource = self
         searchBar.delegate = self
+        searchBar.returnKeyType = .done
         
         getPokemon()
     }
@@ -42,21 +43,19 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         }
     }
     
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        view.endEditing(true)
+    }
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText == "" {
             searchMode = false
+            collectionView.reloadData()
+            view.endEditing(true)
         } else {
             searchMode = true
             filteredPokemonList = pokemonList.filter({$0.name.range(of: searchText.lowercased()) != nil})
             collectionView.reloadData()
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if searchMode {
-            return filteredPokemonList.count
-        } else {
-            return pokemonList.count
         }
     }
     
@@ -70,6 +69,34 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             return cell
         } else {
             return UICollectionViewCell()
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        var selectedPokemon: Pokemon!
+        if searchMode {
+            selectedPokemon = filteredPokemonList[indexPath.row]
+        } else {
+            selectedPokemon = pokemonList[indexPath.row]
+        }
+        performSegue(withIdentifier: "DetailVC", sender: selectedPokemon)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "DetailVC" {
+            if let segueVC = segue.destination as? DetailVC {
+                if let selectedPokemon = sender as? Pokemon {
+                    segueVC.pokemon = selectedPokemon
+                }
+            }
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if searchMode {
+            return filteredPokemonList.count
+        } else {
+            return pokemonList.count
         }
     }
 

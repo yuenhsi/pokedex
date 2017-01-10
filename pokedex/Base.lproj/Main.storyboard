@@ -14,10 +14,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--View Controller-->
+        <!--CollectionVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="pokedex" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="CollectionVC" customModule="pokedex" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -135,11 +135,42 @@
                     <connections>
                         <outlet property="collectionView" destination="0nM-d0-7VK" id="pOh-yb-8ok"/>
                         <outlet property="searchBar" destination="u4E-qM-Lbb" id="tyq-o1-8C9"/>
+                        <segue destination="tVT-a0-fEx" kind="show" identifier="DetailVC" id="gfj-c4-H94"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="181.59999999999999" y="125.4872563718141"/>
+        </scene>
+        <!--DetailVC-->
+        <scene sceneID="N60-aV-qMV">
+            <objects>
+                <viewController id="tVT-a0-fEx" customClass="DetailVC" customModule="pokedex" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ZuX-9s-kIW"/>
+                        <viewControllerLayoutGuide type="bottom" id="KD6-GE-TM1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="brA-lT-G9g">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="haHAA" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PE4-QR-fv6">
+                                <rect key="frame" x="141" y="307" width="93" height="53"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="pokemonLabel" destination="PE4-QR-fv6" id="b7l-Oa-O74"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qpL-Vc-o6f" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="949.60000000000002" y="124.58770614692655"/>
         </scene>
     </scenes>
     <resources>
