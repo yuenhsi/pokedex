@@ -8,16 +8,21 @@
 
 import UIKit
 
-class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate {
     
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var collectionView: UICollectionView!
-    var pokemonList: [Pokemon]!
+    
+    var pokemonList = [Pokemon]()
+    var filteredPokemonList = [Pokemon]()
+    var searchMode = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         collectionView.delegate = self
         collectionView.dataSource = self
+        searchBar.delegate = self
         
         getPokemon()
     }
@@ -28,21 +33,40 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             let csv = try CSV(contentsOfURL: path)
             let rows = csv.rows
             for row in rows {
-                print(row["identifier"], row["id"])
+                let pokemon = Pokemon.init(name: row["identifier"]!, id: Int(row["id"]!)!)
+                pokemonList.append(pokemon)
             }
             
         } catch let err as NSError {
             print("\(err.localizedDescription)")
         }
     }
-
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText == "" {
+            searchMode = false
+        } else {
+            searchMode = true
+            filteredPokemonList = pokemonList.filter({$0.name.range(of: searchText.lowercased()) != nil})
+            collectionView.reloadData()
+        }
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return pokemonList.count
+        if searchMode {
+            return filteredPokemonList.count
+        } else {
+            return pokemonList.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PokeCell", for: indexPath) as? PokeCell {
-            cell.configureCell(pokemonList[indexPath.row])
+            if searchMode {
+                cell.configureCell(filteredPokemonList[indexPath.row])
+            } else {
+                cell.configureCell(pokemonList[indexPath.row])
+            }
             return cell
         } else {
             return UICollectionViewCell()
