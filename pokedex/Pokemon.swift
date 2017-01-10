@@ -161,6 +161,8 @@ class Pokemon {
                 print(self._height)
                 print(self._weight)
                 print(self._type)
+                print(self._evoText)
+                print(self._description)
                 
                 // type, description, evo stuff
             }
