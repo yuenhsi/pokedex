@@ -34,7 +34,7 @@ class CollectionVC: UIViewController, UICollectionViewDataSource, UICollectionVi
             let csv = try CSV(contentsOfURL: path)
             let rows = csv.rows
             for row in rows {
-                let pokemon = Pokemon.init(name: row["identifier"]!, id: Int(row["id"]!)!)
+                let pokemon = Pokemon.init(name: row["identifier"]!.capitalized, id: Int(row["id"]!)!)
                 pokemonList.append(pokemon)
             }
             
