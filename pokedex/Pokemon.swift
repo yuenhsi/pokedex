@@ -134,6 +134,18 @@ class Pokemon {
                     }
                     self._type = typeArray.joined(separator: ",")
                 }
+                if let evolutions = JSON["evolutions"] as? [Dictionary<String, Any>], evolutions.count > 0 {
+                    if let level =  evolutions[0]["level"] as? Int {
+                        self._evoLvl = "\(level)"
+                    }
+                    if let to = evolutions[0]["to"] as? String {
+                        self._evoName = to
+                    }
+                    self._evoID = self.id + 1
+                    self._evoText = "Next evolution: \(self.evoName) LVL \(self.evoLvl)"
+                } else {
+                    self._evoText = "No evolutions"
+                }
                 if let descriptions = JSON["descriptions"] as? [Dictionary<String, String>], descriptions.count > 0 {
                     let descriptionUri = descriptions[0]["resource_uri"]
                     Alamofire.request("\(URL_PREFIX)\(descriptionUri)").responseJSON { response in
