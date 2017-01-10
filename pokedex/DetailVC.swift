@@ -11,6 +11,16 @@ import UIKit
 class DetailVC: UIViewController {
     
     @IBOutlet weak var pokemonLabel: UILabel!
+    @IBOutlet weak var pokedexIdLabel: UILabel!
+    @IBOutlet weak var attackLabel: UILabel!
+    @IBOutlet weak var defenseLabel: UILabel!
+    @IBOutlet weak var heightLabel: UILabel!
+    @IBOutlet weak var weightLabel: UILabel!
+    @IBOutlet weak var typeLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var evoTextLabel: UILabel!
+    @IBOutlet weak var currentEvoImg: UIImageView!
+    @IBOutlet weak var nextEvoImg: UIImageView!
     
     var pokemon: Pokemon!
 
@@ -18,5 +28,8 @@ class DetailVC: UIViewController {
         super.viewDidLoad()
 
         pokemonLabel.text = pokemon.name
+        pokemon.getDetails {
+            //update UI
+        }
     }
 }

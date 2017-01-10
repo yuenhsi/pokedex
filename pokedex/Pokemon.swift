@@ -14,7 +14,7 @@ class Pokemon {
     private var _name: String!
     private var _id: Int!
     private var _attack: String!
-    private var _defence: String!
+    private var _defense: String!
     private var _height: String!
     private var _weight: String!
     private var _type: String!
@@ -40,11 +40,11 @@ class Pokemon {
         return _attack
     }
     
-    var defence: String {
-        if _defence == nil {
-            _defence = ""
+    var defense: String {
+        if _defense == nil {
+            _defense = ""
         }
-        return _defence
+        return _defense
     }
     
     var height: String {
@@ -107,6 +107,31 @@ class Pokemon {
     init(name: String, id: Int) {
         self._name = name
         self._id = id
+    }
+    
+    func getDetails(completed: @escaping DownloadComplete) {
+        Alamofire.request("\(POKEMON_URL_PREFIX)/\(self._id)").responseJSON { response in
+            if let JSON = response.result.value as? Dictionary<String, Any> {
+                if let attack = JSON["attack"] as? Int {
+                    self._attack = "\(attack)"
+                }
+                if let defense = JSON["defense"] as? Int {
+                    self._defense = "\(defense)"
+                }
+                if let height = JSON["height"] as? String {
+                    self._height = height
+                }
+                if let weight = JSON["weight"] as? String {
+                    self._weight = weight
+                }
+                print(self._attack)
+                print(self._defense)
+                print(self._height)
+                print(self._weight)
+            }
+            completed()
+            
+        }
     }
     
 }
