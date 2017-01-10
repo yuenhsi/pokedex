@@ -8,18 +8,44 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+    
+    @IBOutlet weak var collectionView: UICollectionView!
+    var pokemonList: [Pokemon]!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        
+        getPokemon()
+    }
+    
+    func getPokemon() {
+        let path = Bundle.main.path(forResource: "pokemon", ofType: "csv")!
+        do {
+            let csv = try CSV(contentsOfURL: path)
+            let rows = csv.rows
+            print(rows)
+            
+        } catch let err as NSError {
+            print("\(err.localizedDescription)")
+        }
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return pokemonList.count
     }
-
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PokeCell", for: indexPath) as? PokeCell {
+            cell.configureCell(pokemonList[indexPath.row])
+            return cell
+        } else {
+            return UICollectionViewCell()
+        }
+    }
 
 }
 
