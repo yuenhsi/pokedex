@@ -27,7 +27,9 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         do {
             let csv = try CSV(contentsOfURL: path)
             let rows = csv.rows
-            print(rows)
+            for row in rows {
+                print(row["identifier"], row["id"])
+            }
             
         } catch let err as NSError {
             print("\(err.localizedDescription)")
