@@ -10,6 +10,7 @@ import UIKit
 
 class DetailVC: UIViewController {
     
+    @IBOutlet weak var thumbImg: UIImageView!
     @IBOutlet weak var pokemonLabel: UILabel!
     @IBOutlet weak var pokedexIdLabel: UILabel!
     @IBOutlet weak var attackLabel: UILabel!
@@ -26,10 +27,32 @@ class DetailVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        thumbImg.image = UIImage(named: "\(pokemon.id)")
         pokemonLabel.text = pokemon.name
         pokemon.getDetails {
-            //update UI
+            self.updateUI()
         }
+    }
+    
+    func updateUI() {
+        pokedexIdLabel.text = "\(pokemon.id)"
+        attackLabel.text = pokemon.attack
+        defenseLabel.text = pokemon.defense
+        heightLabel.text = pokemon.height
+        weightLabel.text = pokemon.weight
+        typeLabel.text = pokemon.type
+        descriptionLabel.text = pokemon.pokeDescription
+        evoTextLabel.text = pokemon.evoText
+        currentEvoImg.image = UIImage(named: "\(pokemon.id)")
+        if pokemon.evoID != 0 {
+            
+            nextEvoImg.image = UIImage(named:  "\(pokemon.id + 1)")
+        } else {
+            nextEvoImg.isHidden = true
+        }
+    }
+    
+    @IBAction func backBtnPressed(_ sender: Any) {
+        dismiss(animated: true)
     }
 }

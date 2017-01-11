@@ -18,7 +18,7 @@ class Pokemon {
     private var _height: String!
     private var _weight: String!
     private var _type: String!
-    private var _description: String!
+    private var _pokeDescription: String!
     private var _evoID: Int!
     private var _evoLvl: String!
     private var _evoName: String!
@@ -68,11 +68,11 @@ class Pokemon {
         return _type
     }
     
-    var description: String {
-        if _description == nil {
-            _description = ""
+    var pokeDescription: String {
+        if _pokeDescription == nil {
+            _pokeDescription = ""
         }
-        return _description
+        return _pokeDescription
     }
     
     var evoID: Int {
@@ -129,7 +129,7 @@ class Pokemon {
                     var typeArray = [String]()
                     for type in types {
                         if let name = type["name"] {
-                            typeArray.append(name)
+                            typeArray.append(name.capitalized)
                         }
                     }
                     self._type = typeArray.joined(separator: ",")
@@ -147,24 +147,18 @@ class Pokemon {
                     self._evoText = "No evolutions"
                 }
                 if let descriptions = JSON["descriptions"] as? [Dictionary<String, String>], descriptions.count > 0 {
-                    let descriptionUri = descriptions[0]["resource_uri"]
-                    Alamofire.request("\(URL_PREFIX)\(descriptionUri)").responseJSON { response in
-                        if let JSON = response.result.value as? Dictionary<String, Any> {
-                            if let description = JSON["description"] as? String {
-                                self._description = description
+                    if let descriptionUri = descriptions[0]["resource_uri"] {
+                        Alamofire.request("\(URL_PREFIX)\(descriptionUri)").responseJSON { response in
+                            if let JSON = response.result.value as? Dictionary<String, Any> {
+                                if let description = JSON["description"] as? String {
+                                    self._pokeDescription = description.capitalized
+                                }
                             }
+                            completed()
                         }
+
                     }
                 }
-                print(self._attack)
-                print(self._defense)
-                print(self._height)
-                print(self._weight)
-                print(self._type)
-                print(self._evoText)
-                print(self._description)
-                
-                // type, description, evo stuff
             }
             completed()
         }
