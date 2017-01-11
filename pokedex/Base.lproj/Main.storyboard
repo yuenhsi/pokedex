@@ -64,7 +64,7 @@
                                 <rect key="frame" x="0.0" y="105" width="375" height="562"/>
                             </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="0nM-d0-7VK">
-                                <rect key="frame" x="0.0" y="105" width="375" height="562"/>
+                                <rect key="frame" x="20" y="125" width="335" height="522"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="PFi-un-NR7">
                                     <size key="itemSize" width="108" height="108"/>
@@ -88,9 +88,9 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bulbasaur" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hoZ-P8-BXR">
-                                                    <rect key="frame" x="0.0" y="86" width="108" height="22"/>
+                                                    <rect key="frame" x="0.0" y="88.5" width="108" height="19.5"/>
                                                     <color key="backgroundColor" red="1" green="0.49474199149999998" blue="0.38928391890000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                    <fontDescription key="fontDescription" name="Baskerville" family="Baskerville" pointSize="19"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -118,17 +118,17 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="xut-YP-uQV" secondAttribute="trailing" id="0GT-lW-Oct"/>
                             <constraint firstItem="lpB-OK-Nnb" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="2yI-1e-4FF"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="0nM-d0-7VK" secondAttribute="bottom" id="6zy-jD-EpK"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="0nM-d0-7VK" secondAttribute="bottom" constant="20" id="6zy-jD-EpK"/>
                             <constraint firstItem="xut-YP-uQV" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Bx8-oa-AaG"/>
                             <constraint firstItem="u4E-qM-Lbb" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="FwK-8J-FB9"/>
                             <constraint firstItem="lpB-OK-Nnb" firstAttribute="top" secondItem="u4E-qM-Lbb" secondAttribute="bottom" id="L8F-jm-fw9"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="lpB-OK-Nnb" secondAttribute="bottom" id="Qjx-eq-iOU"/>
-                            <constraint firstAttribute="trailing" secondItem="0nM-d0-7VK" secondAttribute="trailing" id="WF2-z4-mvH"/>
+                            <constraint firstAttribute="trailing" secondItem="0nM-d0-7VK" secondAttribute="trailing" constant="20" id="WF2-z4-mvH"/>
                             <constraint firstItem="u4E-qM-Lbb" firstAttribute="top" secondItem="xut-YP-uQV" secondAttribute="bottom" id="bo7-px-9ki"/>
                             <constraint firstAttribute="trailing" secondItem="lpB-OK-Nnb" secondAttribute="trailing" id="fEq-YS-XOv"/>
-                            <constraint firstItem="0nM-d0-7VK" firstAttribute="top" secondItem="u4E-qM-Lbb" secondAttribute="bottom" id="ivh-iS-cbs"/>
+                            <constraint firstItem="0nM-d0-7VK" firstAttribute="top" secondItem="u4E-qM-Lbb" secondAttribute="bottom" constant="20" id="ivh-iS-cbs"/>
                             <constraint firstAttribute="trailing" secondItem="u4E-qM-Lbb" secondAttribute="trailing" id="mbq-Oj-QPg"/>
-                            <constraint firstItem="0nM-d0-7VK" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="nIw-sS-Yht"/>
+                            <constraint firstItem="0nM-d0-7VK" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="nIw-sS-Yht"/>
                             <constraint firstItem="xut-YP-uQV" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="x6q-cP-KrK"/>
                         </constraints>
                     </view>
